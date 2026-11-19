@@ -3,23 +3,125 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GTA VI trophy checklist</title>
+<title>Vice City Trophy Ledger — GTA VI Trophy Guide &amp; Tracker</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <h1>GTA VI trophy checklist</h1>
-  <p id="progress">0 of 55 earned</p>
+<header class="hero">
+  <div class="sun" aria-hidden="true"><svg viewBox="0 0 600 300" preserveAspectRatio="xMidYMax slice"><defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1055"/><stop offset=".45" stop-color="#7597de"/><stop offset=".62" stop-color="#ff7e5f"/><stop offset=".8" stop-color="#feb47b"/><stop offset="1" stop-color="#ff2e88"/></linearGradient><linearGradient id="sunset" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd319"/><stop offset=".55" stop-color="#ff7e5f"/><stop offset="1" stop-color="#ff2e88"/></linearGradient><clipPath id="suncut"><circle cx="300" cy="185" r="105"/></clipPath></defs><rect width="600" height="300" fill="url(#sky)"/><g clip-path="url(#suncut)"><circle cx="300" cy="185" r="105" fill="url(#sunset)"/><g fill="#2b1055"><rect x="180" y="120" width="240" height="7"/><rect x="180" y="140" width="240" height="9"/><rect x="180" y="162" width="240" height="11"/><rect x="180" y="188" width="240" height="13"/><rect x="180" y="216" width="240" height="15"/><rect x="180" y="248" width="240" height="18"/></g></g><g fill="#12082b"><path d="M0 300V238l22-14 18 12 20-22 16 18 24-10 14 16 22-8 18 10 20-16 16 14 22-6 18 12 20-18 16 16 22-10 14 14 22-8 18 10 20-14 16 12 22-8 18 10 20-16 16 14 22-6 18 12 20-18 16 16 22-10 14 14 22-8 18 10V300z"/><path d="M52 300V210q-4-26 12-34 4 22 2 34l10-18q6 14 2 26 10-8 14-22 8 16 2 30l8-10q4 12-2 22-2 8-4 12v60zM520 300v-52q-2-16 8-26 2 14 0 26l8-14q6 12 2 22 8-6 12-18 6 14 0 26l8-8q2 10-2 18-2 6-4 10v44z"/></g><g fill="#12082b"><path d="M96 300V196h10v-14h8v14h10v104zM118 196l14-22 14 22zM470 300V210h9v-12h8v12h9v90zM488 210l12-18 12 18z"/></g></svg></div>
+  <div class="hero-text">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; Works offline</p>
+    <h1><span class="vice">VICE CITY</span><br>Trophy Ledger</h1>
+    <p class="tagline">Every one of the 55 trophies, with its official name, description and grade, a guide that cites its sources, a roadmap to the platinum, and a checklist that remembers you.</p>
+    <div class="hero-stats">
+      <div class="ring-wrap" role="img" aria-label="Platinum progress">
+        <svg class="ring" viewBox="0 0 120 120"><circle class="ring-bg" cx="60" cy="60" r="52"/><circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"/><text x="60" y="56" class="ring-num" id="ringNum">0%</text><text x="60" y="74" class="ring-sub">to platinum</text></svg>
+      </div>
+      <div class="counts">
+        <p><strong id="earnedCount">0 / 55</strong> trophies earned</p>
+        <p id="gradeCounts">Platinum 0/1 &middot; Gold 0/2 &middot; Silver 0/6 &middot; Bronze 0/46</p>
+        <p id="gsCount">0 / 1,000 Gamerscore on Xbox</p>
+        <p class="dim">~200 hours &middot; Difficulty 4/10 &middot; 1 playthrough &middot; No online trophies</p>
+      </div>
+    </div>
+  </div>
 </header>
-<div class="controls">
-  <label>Grade <select id="grade"><option value="all">All</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select></label>
-  <button id="export" type="button">Export progress</button>
-  <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
-</div>
-<table>
-  <thead><tr><th>Earned</th><th>Trophy</th><th>Grade</th><th>How to get it</th></tr></thead>
-  <tbody id="rows"></tbody>
-</table>
+
+<nav class="tabs" role="tablist" aria-label="Guide sections">
+  <button class="tab active" data-tab="tracker" role="tab" aria-selected="true">Tracker</button>
+  <button class="tab" data-tab="roadmap" role="tab" aria-selected="false">Roadmap to Platinum</button>
+  <button class="tab" data-tab="missables" role="tab" aria-selected="false">Missables</button>
+  <button class="tab" data-tab="checklist" role="tab" aria-selected="false">100% Checklist</button>
+  <button class="tab" data-tab="sources" role="tab" aria-selected="false">Sources &amp; Honesty</button>
+</nav>
+
+<main>
+<section id="tab-tracker" class="panel active" role="tabpanel">
+  <div class="controls">
+    <input id="search" type="search" placeholder="Trophy name, mission, keyword…" aria-label="Search trophies">
+    <div class="chips" id="catChips" role="group" aria-label="Filter by kind">
+      <button class="chip active" data-cat="all">All 55</button>
+      <button class="chip" data-cat="story">Story</button>
+      <button class="chip" data-cat="missable">Missable</button>
+      <button class="chip" data-cat="collectibles">Collectibles</button>
+      <button class="chip" data-cat="activities">Activities</button>
+      <button class="chip" data-cat="online">Online</button>
+    </div>
+    <label class="sel">Grade
+      <select id="grade"><option value="all">All grades</option><option value="platinum">Platinum</option><option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option></select>
+    </label>
+    <label class="switch"><input type="checkbox" id="spoilers" checked><span class="knob"></span> Hide story spoilers</label>
+    <label class="switch"><input type="checkbox" id="earnedOnly"><span class="knob"></span> Earned only</label>
+    <button id="export" type="button">Export progress</button>
+    <label class="import">Import progress <input id="import" type="file" accept="application/json"></label>
+    <button id="reset" type="button">Reset</button>
+  </div>
+  <p class="result-line" id="resultLine"></p>
+  <div class="detail" id="detail" hidden></div>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="emptyOnline" hidden>No online trophies — everything in GTA VI is single-player. Nothing here can be missed online, because there is nothing online to miss.</p>
+</section>
+
+<section id="tab-roadmap" class="panel" role="tabpanel">
+  <h2>Roadmap to <em>Vice Got a Price!</em></h2>
+  <p class="lede">Around 200 hours, difficulty 4/10. One playthrough is enough — there are no difficulty settings, no New Game+, and no mission replay, but free roam carries on after the story.</p>
+  <div class="stages">
+    <article class="stage"><p class="stage-num">Stage 1</p><h3>Play the story</h3><p class="hours">60–80 hours</p><p>Play the Prologue and Chapters 1–5 and take optional missions as they appear — many are only offered for a while. Scan vehicles with the WAiNK app (200 needed for 100%), study animals with binoculars (100), and meditate with both characters. Do the Chapter 1 balcony meditation (see Missables) and steer clear of the Irredeemable criminal profile: it is permanent.</p><p class="stage-trophies">Earns: all 12 story trophies, plus most of the early collectibles and activities.</p></article>
+    <article class="stage"><p class="stage-num">Stage 2</p><h3>Finish the 100% checklist</h3><p class="hours">~100 hours</p><p>After the credits, open Progress &gt; Stats &gt; 100% Completion and work through what is left: every robbery, bank vault and gang operation, underwater discoveries, shooting ranges, drone races and Bret's Target Decks, plus 70 of the 80 challenges. This is the longest stretch — and it pops <strong>A Long Road</strong>, the hardest trophy.</p><p class="stage-trophies">Earns: A Long Road, Cunning Stunts, The Shootist, You WAiNKer!, Maximum Withdrawal and most of the rest.</p></article>
+    <article class="stage"><p class="stage-num">Stage 3</p><h3>Strangers &amp; Freaks and clean-up</h3><p class="hours">~10 hours</p><p>Stranger missions are not part of 100%, but <strong>Strangers &amp; Freaks</strong> needs 8 strands, and several trophies come from character quest lines (Andy, Kenton, Billy, Randy, Tyrone and Bret). Finish those, then check the Tracker for anything left.</p><p class="stage-trophies">Earns: Strangers &amp; Freaks, Road to Rehabilitation, This Was No Boat Accident, The Lone Rider, Supply &amp; Demand, Spin On This!, Fair Game.</p></article>
+  </div>
+  <div class="savebox">
+    <h3>Save plan — read this before you start</h3>
+    <ul>
+      <li>There are <strong>15 manual save slots</strong> and 1 autosave slot. Keep a save at the start and end of each chapter (10 saves), then rotate the remaining 5 in free roam.</li>
+      <li>There is <strong>no mission replay</strong>. A save is your only way back.</li>
+      <li>Keep a <strong>Chapter 1 save</strong> until Positive Mental Attitude pops — see Missables.</li>
+      <li><strong>Cheats disable trophies and saving</strong> for that session. Keep them off your trophy run.</li>
+      <li>Turn on progress and collectible notifications in Settings, and Criminal Profile notifications so you can watch the 500 actions for Actions Speak Louder.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="tab-missables" class="panel" role="tabpanel">
+  <h2>What can actually go wrong</h2>
+  <p class="lede">Only <strong>one</strong> trophy is possibly missable. Everything else can be done after the story in free roam.</p>
+  <article class="miss-card" id="missCard">
+    <p class="miss-flag">Possibly missable &middot; 1 of 55</p>
+    <h3>Positive Mental Attitude <span class="grade bronze">Bronze &middot; 10G</span></h3>
+    <p class="miss-desc">Meditate at every spot across Leonida.</p>
+    <div class="miss-facts">
+      <p><strong>The real count:</strong> 18 meditation spots across <strong>10 locations</strong> — not 18 spots in one place. Meditating at a spot with Jason <em>and</em> Lucia together counts twice. Track it in Progress &gt; Collections &gt; Exploration &gt; Meditations.</p>
+      <p><strong>The Chapter 1 catch:</strong> the morning after the mission Down to Earth, talk to Lucia in the kitchen. She walks out to the balcony at Jason's house to meditate — follow her and choose <strong>Accept</strong>. That meditation adds +1 to the counter but is <strong>not marked as a Meditation Spot</strong> like the other 18, and it is <strong>unconfirmed</strong> whether the trophy needs it. PowerPyx earned the trophy after doing it, so do it anyway. It is gone after Chapter 1.</p>
+      <p><strong>What saves you:</strong> keep a Chapter 1 save until the trophy pops. The last spot needs both characters together, which opens after Coffee Break in Chapter 2. And the 100% checklist only needs 15 of 18 meditations, so this cannot cost you A Long Road.</p>
+    </div>
+    <p class="miss-source">Sources: PowerPyx, GTABase — both flag this as the only possibly-missable trophy, and both say the Chapter 1 requirement is unconfirmed.</p>
+    <button class="earn-btn" id="missEarn" type="button">Mark Positive Mental Attitude earned</button>
+  </article>
+  <article class="safe-card">
+    <h3>Everything else is safe</h3>
+    <p>No other trophy can be missed. Story trophies unlock as you play, quest-givers who go quiet during the story (Kenton, for example) come back later, and every collectible and activity stays available in free roam after the credits. Optional missions with an hourglass icon do disappear — but there are far more than the 100 the checklist needs, so missing one changes nothing.</p>
+  </article>
+</section>
+
+<section id="tab-checklist" class="panel" role="tabpanel">
+  <h2>A Long Road — the 100% checklist</h2>
+  <p class="lede">35 requirements. The checklist only appears under Progress &gt; Stats &gt; 100% Completion after the story, but everything you do before then already counts. Nothing on it is missable, and it is closer to 60% of everything in the game — most things are only partly required.</p>
+  <div class="check-progress"><div class="check-bar"><div id="checkFill"></div></div><p id="checkLine">0 of 35 done</p></div>
+  <div id="checkGroups"></div>
+</section>
+
+<section id="tab-sources" class="panel" role="tabpanel">
+  <h2>Sources &amp; honesty</h2>
+  <div class="source-grid">
+    <article><h3>Where this list comes from</h3><p>Grand Theft Auto VI released on <strong>19 November 2026</strong>. Rockstar has not published an official trophy list of its own, so the names, descriptions, grades and Gamerscore here are the ones <strong>PowerPyx</strong> (GTA 6 Trophy Guide &amp; Roadmap, 18 Nov 2026) and <strong>GTABase</strong> (GTA 6 Trophy Guide &amp; Achievements List, 18 Nov 2026) both publish — their lists agree on all 55. Every per-trophy guide names its source in the Tracker.</p></article>
+    <article><h3>What is still unconfirmed</h3><p>Six trophies are labelled <strong>unconfirmed</strong> in the Tracker, and this guide says so instead of guessing: Fair Game (which animal pops it), In The Beginning… (exact steps), Capital Offense (exact steps — PowerPyx names the blue Banshee method), Bad Luck, I Guess (believed to be the Prologue Payday Loans store), The Truth Is Out There (believed to be a UFO questline), Ten Pin (believed to be a motorcycle melee kick). The Chapter 1 meditation for Positive Mental Attitude is likewise unconfirmed as a requirement — the guide tells you to do it anyway.</p></article>
+    <article><h3>How this guide was written</h3><p>Every guide is written in this guide's own words from the facts in those two sources. Nothing is copied from another guide. No Rockstar logo, artwork or font is used anywhere; the sunset, skyline and palms are original CSS/SVG art drawn for this guide.</p></article>
+    <article><h3>About the numbers</h3><p>55 trophies on PS5 (1 Platinum, 2 Gold, 6 Silver, 46 Bronze), 28 hidden, 1,000 Gamerscore on Xbox Series X|S, where the platinum is a 0G Mythic achievement. Difficulty 4/10 and ~200 hours are PowerPyx's estimates. The 100% checklist counts are PowerPyx's (35 requirements).</p></article>
+  </div>
+</section>
+</main>
+
+<footer><p>Vice City Trophy Ledger — an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide is not affiliated with or endorsed by Rockstar Games. Works offline; your progress never leaves your browser.</p></footer>
 <script type="module" src="app.js"></script>
 </body>
 </html>
