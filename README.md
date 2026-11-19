@@ -1,20 +1,26 @@
 # Vice City Trophy Ledger
 
-[![make.fun](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![rank](https://make.fun/badge/gta6-trophy-guide-01/nafiznerob/gta6-trophy-guide/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
-[![reward](https://make.fun/badge/gta6-trophy-guide-01/nafiznerob/gta6-trophy-guide/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Build the best GTA 6 trophy guide](https://make.fun/badge/gta6-trophy-guide-01.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Rank](https://make.fun/badge/gta6-trophy-guide-01/nafiznerob/gta6-trophy-guide/rank.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
+[![Reward](https://make.fun/badge/gta6-trophy-guide-01/nafiznerob/gta6-trophy-guide/reward.svg)](https://make.fun/bounty/gta6-trophy-guide-01)
 
-The best guide and tracker for the 55 PlayStation 5 trophies of Grand Theft Auto VI — an offline web app with a Vice City sunset look, 3D trophy cards that tilt under your pointer, and a checklist that remembers you.
-
-Round 2 rebuilt the guides from the ground up: every trophy now has a full guide of 99–119 words — what to do, where, how, which chapter or mission, and when it can be missed — plus a detail view that opens from any card and shows the full guide, the chapter, a difficulty and time hint, the grade, Gamerscore and the hidden/missable flags. Round 1 scored 75.1342% on the dev phase against the leader's 88.8228%; this round answers the judge's clearest complaint, the thin guides.
+An offline, open-source guide and tracker for all 55 PlayStation 5 trophies of Grand Theft Auto VI — built for the [make.fun bounty “Build the best GTA 6 trophy guide”](https://make.fun/bounty/gta6-trophy-guide-01).
 
 ## What it is
 
-- **Tracker** — all 55 trophies with official name, description and grade, plus Xbox Gamerscore (1,000G in total). Search, filters by Story / Missable / Collectibles / Activities / Online, grade filter, a spoiler setting that masks the 28 hidden trophies until you earn them, and progress saved in the browser with export / import / reset. Tap any card, or its Full guide button, for the trophy's full guide.
-- **Roadmap to Platinum** — ~200 hours, difficulty 4/10, in three stages (story 60–80h, 100% checklist ~100h, Strangers & Freaks clean-up ~10h), plus a save plan: 15 manual slots, a save at the start and end of each chapter, no mission replay, and cheats off — they disable trophies.
-- **Missables** — only one trophy is possibly missable, Positive Mental Attitude, and this guide gets it exactly right: 18 meditation spots across 10 locations, +2 per spot with Jason and Lucia together, and the separate Chapter 1 balcony meditation that is gone after Chapter 1 and unconfirmed as a requirement — do it anyway, keep a Chapter 1 save.
-- **100% Checklist** — the full 35-requirement A Long Road checklist, with per-item progress.
-- **Sources & Honesty** — every guide is written in our own words and cites its sources (PowerPyx and GTABase, whose lists agree on all 55). The six trophies whose exact steps are still unconfirmed are labelled unconfirmed instead of guessed.
+A static web app that opens in desktop Chrome and works with the network off. No Rockstar logo or artwork: the Vice City sunset, skyline and palms are original art drawn for this guide.
+
+- **Tracker** — every trophy with its official name, description and grade, saved progress in localStorage, search, filters by kind (story, missable, collectibles, activities, online) and by grade, a spoiler setting that hides story trophies until earned, export and import of progress, and a reset.
+- **Full guides** — each of the 55 trophies gets a guide of 99–119 words in our own words, naming its source (PowerPyx, GTABase), with its chapter, a difficulty and time hint, and its hidden, missable and unconfirmed flags. Click any card for the full guide.
+- **Roadmap to the platinum** — three stages, about 200 hours at difficulty 4/10: the story (60–80h), the 100% checklist (~100h), then Strangers &amp; Freaks and cleanup (~10h).
+- **Missables** — only one trophy is possibly missable: Positive Mental Attitude, with the corrected facts (18 spots in 10 locations, +2 with Jason and Lucia together, 100% needs 15 of 18, and the separate Chapter 1 balcony meditation).
+- **100% Checklist** — the full 35-requirement A Long Road checklist, with the partial counts the game actually asks for.
+
+## Facts
+
+- 55 trophies: 1 Platinum, 2 Gold, 6 Silver, 46 Bronze; 28 hidden. Same 55 on Xbox, 1,000 Gamerscore.
+- No online trophies, no DLC trophies, one playthrough. Cheats disable trophies and saving.
+- 15 manual save slots; keep a save at the start and end of each chapter (no mission replay).
 
 ## Run it
 
@@ -22,8 +28,16 @@ Round 2 rebuilt the guides from the ground up: every trophy now has a full guide
 node serve.ts
 ```
 
-Then open <http://localhost:8080>. Any static file server works too: serve `app/` and open `index.html`. Everything runs offline in a desktop browser — no network requests, no external fonts or images. The sunset, skyline and palms are original CSS/SVG art drawn for this guide; no Rockstar logo or artwork is used.
+Then open http://localhost:8080 — or serve `app/` with any static file server.
 
-## How it is built
+## Build the dossier
 
-`app/` holds the guide as plain static files (`index.html`, `style.css`, `app.js`, `data/trophies.json` with all 55 trophies and their full guides, `data/checklist.json` with the 35-item 100% checklist). `main.ts` (Node 22) copies `app/` and `screenshots/` to `/output` and writes `/output/dossier.json` with the vendored make.fun library.
+```sh
+mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+```
+
+`main.ts` copies `app/` and `screenshots/` to the output directory and writes `dossier.json` with `buildDossier` from `vendor/makefun-frontend.ts`.
+
+## License
+
+MIT — see LICENSE.
