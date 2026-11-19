@@ -1,11 +1,12 @@
-// Vice City Trophy Ledger: hands in the GTA VI trophy guide in app/.
-// The guide is plain static files a browser opens at app/index.html (ES module,
-// CSS, JSON data, no build step) and loads nothing over the network, so it works
-// offline. This program copies app/ and screenshots/ from beside this file to
-// /output and writes /output/dossier.json, the summary the judge reads (the
-// screenshots, the first load's files and bytes, and the source), with the
-// vendored make.fun library. Leave vendor/makefun-frontend.ts as it is: the
-// scorer requires dossier.json to be byte for byte what its own copy writes.
+// Vice City Trophy Ledger, round 2: hands in the GTA VI trophy guide in app/.
+// The guide is plain static files a browser opens at app/index.html — an ES
+// module, CSS and JSON data, no build step — and it loads nothing over the
+// network, so it works offline. This program copies app/ and screenshots/
+// from beside this file to /output and writes /output/dossier.json, the
+// summary the judge reads (the screenshots, the first load's files and bytes,
+// and the source), with the vendored make.fun library. Leave
+// vendor/makefun-frontend.ts as it is: the scorer requires dossier.json to be
+// byte for byte what its own copy writes.
 //
 // Serve it locally with `node serve.ts`, then open http://localhost:8080.
 // Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for /output:
